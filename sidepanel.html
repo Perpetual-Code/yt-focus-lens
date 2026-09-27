@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon32.png" />
+  <link rel="stylesheet" href="sidepanel.css" />
+  <title>YouTube Focus Filter</title>
+</head>
+<body>
+  <div class="side">
+    <header class="top">
+      <img src="icons/icon48.png" alt="Focus" class="logo" />
+      <div class="titles">
+        <div class="title">YouTube Focus Filter</div>
+        <div class="subtitle" id="statusLine">Loading…</div>
+      </div>
+      <label class="switch" title="Master toggle – when OFF, all restrictions are removed">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <div class="banner" id="offBanner" hidden>
+      Paused — YouTube is unfiltered. Turn ON to re-apply focus.
+    </div>
+
+    <main>
+      <section class="card">
+        <label class="label" for="keywords">🎯 Focus topics <span class="hint">comma or newline separated</span></label>
+        <textarea id="keywords" rows="4" placeholder="e.g. python async, machine learning, calculus"></textarea>
+        <label class="check"><input type="checkbox" id="autoDetect" /> Auto-detect from my recent YouTube searches (hybrid)</label>
+        <div class="label small">Recent searches <button id="clearRecent" class="link">clear</button></div>
+        <div id="recentList" class="chips"></div>
+        <div id="allowPreview" class="preview"></div>
+      </section>
+
+      <section class="card">
+        <div class="label">🧩 Custom filters</div>
+        <label class="check"><input type="checkbox" id="fShorts" /> Completely remove Shorts <span class="hint">feed, sidebar, nav</span></label>
+        <label class="check"><input type="checkbox" id="fHome" /> Filter Home feed</label>
+        <label class="check"><input type="checkbox" id="fSearch" /> Filter Search results</label>
+        <label class="check"><input type="checkbox" id="fSidebar" /> Filter Watch sidebar / Up Next</label>
+      </section>
+
+      <section class="card">
+        <div class="label">📊 Stats <span class="hint">local only</span></div>
+        <div id="statsLine" class="stats">–</div>
+        <div class="btnrow">
+          <button id="resetStats" class="btn secondary">Reset counters</button>
+          <button id="openYouTube" class="btn primary">Open YouTube</button>
+        </div>
+        <div class="btnrow" style="margin-top:8px">
+          <button id="freshStart" class="btn secondary" title="Clear old history and rebuild from your focus topics">🧹 Start fresh – clear history &amp; rebuild</button>
+        </div>
+        <div class="btnrow" style="margin-top:8px">
+          <button id="clearAccountHistory" class="btn secondary" title="Opens your YouTube History page where YOU confirm 'Clear all watch history' (server-side, resets recommendations)">🔥 Clear YouTube account history…</button>
+        </div>
+        <div class="btnrow" style="margin-top:8px">
+          <button id="diagBtn" class="btn secondary" title="Check what the filter sees on your open YouTube tabs">🔍 Diagnose filter</button>
+        </div>
+        <div id="diagOut" class="preview" hidden style="white-space:pre-wrap"></div>
+        <div id="freshMsg" class="hint" style="margin-top:6px"></div>
+        <div class="hint" style="margin-top:6px">Local flush only. Google server-side history lives at <a href="https://myactivity.google.com/product/youtube" target="_blank" rel="noopener">myactivity.google.com → YouTube</a>.</div>
+      </section>
+
+      <section class="card muted">
+        <div class="label">How it works</div>
+        <ol class="how">
+          <li>Set 1–5 focus phrases.</li>
+          <li>Strict allowlist hides everything else.</li>
+          <li>Turn OFF anytime to restore YouTube instantly.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>100% local • no AI • no tracking • v0.1.0 • <a href="https://github.com/Perpetual-Code/yt-focus-lens" target="_blank" rel="noopener">GitHub</a></footer>
+  </div>
+  <script src="utils.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

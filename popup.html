@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon32.png" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>YouTube Focus Filter</title>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div>
+        <div class="title">🎯 YouTube Focus Filter</div>
+        <div class="subtitle" id="statusLine">Loading…</div>
+      </div>
+      <label class="switch" title="Master toggle – when OFF, all restrictions are removed">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="section">
+      <label class="label" for="keywords">Focus topics <span class="hint">(comma or newline separated)</span></label>
+      <textarea id="keywords" rows="3" placeholder="e.g. python async, machine learning, calculus"></textarea>
+      <div class="row">
+        <label class="check"><input type="checkbox" id="autoDetect" /> Auto-detect from my recent YouTube searches</label>
+      </div>
+      <div id="recentBox">
+        <div class="label small">Recent searches captured <button id="clearRecent" class="link">clear</button></div>
+        <div id="recentList" class="chips"></div>
+      </div>
+      <div id="allowPreview" class="preview"></div>
+    </div>
+
+    <div class="section">
+      <div class="label">Custom filters</div>
+      <label class="check"><input type="checkbox" id="fShorts" /> Completely remove Shorts (feed, sidebar, nav)</label>
+      <label class="check"><input type="checkbox" id="fHome" /> Filter Home feed</label>
+      <label class="check"><input type="checkbox" id="fSearch" /> Filter Search results</label>
+      <label class="check"><input type="checkbox" id="fSidebar" /> Filter Watch sidebar / Up Next</label>
+    </div>
+
+    <div class="section stats">
+      <div class="label">Session stats (local only)</div>
+      <div id="statsLine">–</div>
+      <button id="resetStats" class="btn secondary">Reset counters</button>
+      <button id="freshStart" class="btn secondary" style="margin-top:6px" title="Clear old history and rebuild from your focus topics">🧹 Start fresh – clear history &amp; rebuild</button>
+      <div id="freshMsg" class="hint" style="margin-top:6px;font-size:11px;color:#777"></div>
+    </div>
+
+    <div class="footer">100% local • no AI • no tracking. Turn OFF to restore YouTube instantly. • <a href="https://github.com/Perpetual-Code/yt-focus-lens" target="_blank" rel="noopener">GitHub</a></div>
+  </div>
+  <script src="utils.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
